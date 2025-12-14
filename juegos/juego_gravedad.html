@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego de Gravedad</title>
+
+  <style>
+    body {
+      background-color: #e8f8e8;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+    }
+
+    canvas {
+      border: 2px solid #4caf50;
+      background-color: white;
+      margin-top: 20px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #43a047;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Juego de Gravedad</h2>
+  <p>Haz clic en SALTAR para vencer la gravedad</p>
+
+  <canvas id="canvas" width="500" height="300"></canvas>
+  <br>
+  <button onclick="saltar()">SALTAR</button>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    let y = 50;          // posición vertical
+    let v = 0;           // velocidad
+    const g = 0.6;       // gravedad
+    const radio = 15;
+    const suelo = canvas.height - radio;
+
+    function actualizar() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Física del movimiento
+      v += g;
+      y += v;
+
+      // Detección de colisión con el suelo
+      if (y >= suelo) {
+        y = suelo;
+        v = 0;
+        ctx.fillText("GAME OVER", 200, 150);
+        return;
+      }
+
+      // Dibujar objeto
+      ctx.beginPath();
+      ctx.arc(250, y, radio, 0, Math.PI * 2);
+      ctx.fillStyle = "#4caf50";
+      ctx.fill();
+
+      requestAnimationFrame(actualizar);
+    }
+
+    function saltar() {
+      v = -10; // impulso hacia arriba
+    }
+
+    actualizar();
+  </script>
+
+</body>
+</html>
