@@ -52,6 +52,11 @@
     .btn:hover {
       background-color: #43a047;
     }
+
+    /* Botón adicional con separación */
+    .btn + .btn {
+      margin-left: 10px;
+    }
   </style>
 
 </head>
@@ -82,10 +87,12 @@
     </p>
 
     <p>
-      Los recursos son de <strong>acceso libre</strong> y están diseñados
-      para promover el aprendizaje activo y la curiosidad científica.
+      Además, puedes probar un <strong>juego propio de gravedad</strong>
+      desarrollado para comprender cómo la gravedad afecta el movimiento
+      de los objetos. Haz clic en el botón para jugar.
     </p>
 
+    <!-- Botón de Nobel -->
     <a 
       class="btn"
       href="https://www.nobelprize.org/educational/physics-games/"
@@ -93,6 +100,16 @@
       rel="noopener noreferrer"
     >
       Explorar juegos del Premio Nobel
+    </a>
+
+    <!-- Botón del juego de gravedad -->
+    <a 
+      class="btn"
+      href="juegos/juego_gravedad.html"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Jugar: Juego de Gravedad
     </a>
   </section>
 
